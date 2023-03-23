@@ -28,6 +28,9 @@ func connect_ship_signals(instance):
 	instance.connect("ship_clicked_on", self, "on_ship_clicked")
 	
 func on_ship_clicked(instance):
+	if current_ship:
+		current_ship.am_I_selected = false
+		
 	current_ship = instance
 	current_ship.clicked()
 	print(current_ship)

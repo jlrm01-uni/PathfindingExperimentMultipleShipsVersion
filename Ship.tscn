@@ -80,6 +80,7 @@ shape = SubResource( 1 )
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 10.0
 target_desired_distance = 20.0
+avoidance_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 visible = false
@@ -90,6 +91,10 @@ anims/mouse_exit = SubResource( 3 )
 anims/mouse_over = SubResource( 4 )
 anims/selected = SubResource( 5 )
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="input_event" from="." to="." method="_on_Ship_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_Ship_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Ship_mouse_exited"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_velocity_computed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
